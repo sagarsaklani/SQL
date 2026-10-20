@@ -1,0 +1,163 @@
+Database
+
+Database is a collection of data in a format that can be easily accessed (Digital)
+A software application used to manage out DB is called DBMS.
+
+
+Types of Databases
+
+Ralational
+Data stored in tables
+My SQL
+Otacle
+postgre SQL
+Microsoft SQL server
+
+
+Non - relational(NoSQL)
+data not stored in tables. i.e. they dont dont understand tables.
+1. Mongo DB - Most popular.
+What is SQL?
+Structured Query Language
+SQL is a programming language used to interact with relational databases.
+
+It is used to perform CRUD operations:
+Create
+Read
+Update
+Delete
+
+SEQUEL
+Structured English Query Language
+SQL
+Structured Query Language
+
+
+Creating our First Database
+CREATE DATABASE db_name; -> to create a database
+DROP DATABASE db_name; -> to delete a database
+
+
+USE db_name;
+
+CREATE TABLE table_name(
+	column_name1 datatype constraint,
+	column_name2 datatype constraint,
+	column_name3 datatype constraint
+);
+
+E.G.
+CREATE TABLE student(
+	id INT PRIMARY KEY,
+	name CARCHAR(50),
+	age INT NOT NULL
+);
+
+Types of Data Types
+They define the type of values that can be stored in a column.
+CHAR - string (0-255), can store character of fixed length - CHAR(50)
+VARCHAR - string (0-255), can store characters up to given length - VARCHAR(50)
+BLOB - string (0-65535), can store binary large object - BLOB(1000)
+INT
+TINYINT
+BIGINT
+BIT - can store x-bit values. x can range from 1 to 64 - BIT(2)
+FLOAT - Decimal number - with precision to 23 digits - FLOAT
+DOUBLE - DEccimal umber - with 24 to 53 digis - DOUBLE
+BOOLEAN - Boolean values 0 or 1 - BOOLEAN
+DATE
+YEAR
+
+Signed and Unsigned - numberic data types which stored data types where
+TINYINT UNSIGNED (0 to 255) -> this means unsigned data type
+
+TINYINT (-128 to 127) -> this means signed data type
+
+Types of SQL Commands
+
+DDL (Data Definition Language): create, alter, rename, truncate and drop
+DQL (Data Query Language): select
+DML (Data Manipulation Language): insert, update and delete
+DCL (Data Control Language): grant & revoke permission to users
+TCL (Transaction Control Language): start transaction, commit, rollback -> This comes in advance DBMS.
+
+Table related Queries
+
+SELECT*FROM table_name; ---> * means all this means select all from the table and * means all
+Keys
+Primary Key
+It is a column (or set of columns) in a table that uniquely identifies each row. (a unique id)
+There is only 1 PK & it should be NOT null.
+
+Foreign Key
+A foreign key is a column (or set of columns) in a table that refers to the primary key.
+There can b multiple FKs.
+FKs can have duplicate & null values.
+
+Constraints
+SQL constraints are used to specify rules for data in a table.
+NOT NULL - columns cannot have a null value - col1 int NOT NULL.
+UNIQUE - all values in column are different - col2 int UNIQUE.
+PRIMARY KEY - makes a column unique & not null but used only for one in a table.
+
+4. FOREIGN KEY - prevent actions that would destroy link between tables.
+CREATE TABLE temp(
+	cust_id int,
+	FOREIGN KEY (cust_id) reference customer(id) --> Here customer(id) is the refrence from a different table.
+);
+
+5. DEFAULT - sets the default value of a column
+	salary INT DEFAULT 25000
+
+
+6. CHECK - It can limit the values allowed in a column
+
+CREATE TABLE city(
+	id INT PRIMARY KEY,
+	city VARCHAR(50),
+	age INT,
+	CONSTRAINT age_check CHECK (age >= 18 AND city="Delhi")
+);
+
+CREATE TABLE newTab(
+	age INT CHECK (age >= 18)
+);
+
+
+
+Select in Detail
+used to select any data from database
+
+Basic Syntax
+SELECT col, col2 FROM table_name;
+
+To Select All
+SELECT * FROM table_name;
+
+
+Where Clause
+To define some conditions
+
+SELECT col1, col2 FROM table_name
+WHERE conditions;
+
+e.g.
+SELECT * FROM student WHERE marks > 80;
+SELECT * FROM student WHERE city = "Mumbai";
+
+Using Operators in WHERE
+Arithmetic Operators: +(addition), -(subtraction), *(multiplication), /(division), %(modulus)
+Comparison Operators: =(equal to), !=(not equal to), >, >=, <, <=
+Logical Operators: AND, OR, NOT, IN, BETWEEN, All, LIKE, ANY
+Bitwise Operators: & (Bitwise AND), |(Bitwise OR)
+
+
+Operators
+AND (to check for both conditions to be true)
+SELECT * FROM student WHERE marks > 80 AND city = "Mumbai";
+
+OR (to check for one of the conditions to be true)
+SELECT * FROM student WHERE marks > 90 or city = "Mumbai";
+
+
+
