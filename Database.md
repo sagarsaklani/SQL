@@ -460,7 +460,19 @@ Where grade = "A"
 
 
 
+Delete (to delete existing rows)
 
+
+
+DELETE FROM table\_name
+
+WHERE condition;
+
+
+
+DELETE FROM student
+
+WHERE marks < 33;
 
 
 
