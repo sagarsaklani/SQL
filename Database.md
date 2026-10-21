@@ -340,7 +340,7 @@ Clauses
 
 Limit Clause
 
-sets an upper limit on number of (tuples) rows to be returned 
+sets an upper limit on number of (tuples) rows to be returned
 
 SELECT \* FROM students LIMIT 3;
 
@@ -374,7 +374,7 @@ AVG()
 
 
 
-Eg. 
+Eg.
 
 Select avg(marks) from student;
 
@@ -382,7 +382,7 @@ Select max(marks) from student;
 
 
 
-Group By Clause - Usually we use this with aggregation function. 
+Group By Clause - Usually we use this with aggregation function.
 
 Groups rows that have the same values into summary rows.
 
@@ -406,13 +406,13 @@ Having Clause - similar to Where Clause (in some cases we cant use where clause 
 
 Similar to Where i.e applies some condition on rows.
 
-Used when we want to apply any condition after grouping. 
+Used when we want to apply any condition after grouping.
 
 Count number of students in each city where max marks cross 90.
 
 
 
-Select count(name), city 
+Select count(name), city
 
 from students
 
@@ -422,7 +422,7 @@ Having max(marks) > 90;
 
 
 
-##### General Order 
+##### General Order
 
 ##### Select column(s)
 
@@ -475,6 +475,52 @@ DELETE FROM student
 WHERE marks < 33;
 
 
+
+
+
+###### **Revisiting Foreign Key**
+
+Since 
+
+dept primary kes is linked with dept foreign key so 
+
+dept - id primary key (Parent Table)
+
+teacher - id primary key - dept - foreign key (child table)
+
+
+
+###### **Cascading for FK**
+
+
+
+* **On DELETE Cascade** 
+
+When we create a foreign key using this option, it deletes the referencing rows in the child table when the referenced row is related in the parent table which has a primary key.
+
+
+
+* **On UPDATE Cascade**
+
+When we create a foreign key using UPDATE CASCADE the referencing rows are update in the child table when the referenced row is updated in the parent table which has a primary key. 
+
+
+
+**EG.** 
+
+CREATE TABLE student(
+
+&#x09;id INT PRIMARY KEY,
+
+&#x09;couseID INT,
+
+&#x09;FOREIGN KEY (courseID) REFERENCES course(id)
+
+&#x09;ON DELETE CASCADE
+
+&#x09;ON UPDATE CASCADE
+
+);
 
 
 
