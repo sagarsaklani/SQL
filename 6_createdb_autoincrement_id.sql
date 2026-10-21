@@ -20,4 +20,7 @@ values
 ("shaun",23,"D","Nagpur");
 
 select * from students;
-
+select grade, count(name)
+from students
+group by grade
+order by grade
