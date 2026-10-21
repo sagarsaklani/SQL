@@ -23,4 +23,12 @@ select * from students;
 select grade, count(name)
 from students
 group by grade
-order by grade
+order by grade;
+
+update students set grade = "O" WHERE grade = "A";
+update students set grade = "F" where marks between 10 and 30;
+update students set grade = "B" where marks between 30 and 50;
+update students set marks = marks + 7;
+DELETE FROM students where marks < 21;
+SET SQL_SAFE_UPDATES = 0;
+SET SQL_SAFE_UPDATES = 1;
