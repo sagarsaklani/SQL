@@ -84,6 +84,7 @@ TCL (Transaction Control Language): start transaction, commit, rollback -> This 
 Table related Queries
 
 SELECT*FROM table_name; ---> * means all this means select all from the table and * means all
+
 Keys
 Primary Key
 It is a column (or set of columns) in a table that uniquely identifies each row. (a unique id)
@@ -103,7 +104,7 @@ PRIMARY KEY - makes a column unique & not null but used only for one in a table.
 4. FOREIGN KEY - prevent actions that would destroy link between tables.
 CREATE TABLE temp(
 	cust_id int,
-	FOREIGN KEY (cust_id) reference customer(id) --> Here customer(id) is the refrence from a different table.
+	FOREIGN KEY (cust_id) reference customer(id) --> Here customer(id) is the reference from a different table.
 );
 
 5. DEFAULT - sets the default value of a column
@@ -111,7 +112,6 @@ CREATE TABLE temp(
 
 
 6. CHECK - It can limit the values allowed in a column
-
 CREATE TABLE city(
 	id INT PRIMARY KEY,
 	city VARCHAR(50),
@@ -137,7 +137,6 @@ SELECT * FROM table_name;
 
 Where Clause
 To define some conditions
-
 SELECT col1, col2 FROM table_name
 WHERE conditions;
 
@@ -158,6 +157,76 @@ SELECT * FROM student WHERE marks > 80 AND city = "Mumbai";
 
 OR (to check for one of the conditions to be true)
 SELECT * FROM student WHERE marks > 90 or city = "Mumbai";
+
+Between (select for a given range) - This means they are inclusive
+SELECT * FROM student WHERE marks BETWEEN 80 AND 90;
+
+In (matches any value in the list)
+SELECT * FROM student WHERE city IN ("DELHI","MUMBAI");
+
+NOT (to negate the given condition)
+SELECT * FROM student WHERE city NOT IN ("DELHI","MUMBAI")
+
+Clauses
+Limit Clause
+sets an upper limit on number of (tuples) rows to be returned 
+SELECT * FROM students LIMIT 3;
+SELECT col1, col2 FROM table_name
+LIMIT number;
+Order by Clause
+To sort in ascending (ASC) or descending order (DESC)
+SELECT * FROM students ORDER BY city ASC;
+SELECT col1, col2 from students ORDER BY col_name(s) ASC;
+
+Aggregate Functions
+Aggregate functions perform a calculation on a set of values, and return a single value.
+COUNT()
+MAX()
+MIN()
+SUM()
+AVG()
+
+Eg. 
+Select avg(marks) from student;
+Select max(marks) from student;
+
+Group By Clause - Usually we use this with aggregation function. 
+Groups rows that have the same values into summary rows.
+It collects data from multiple records and groups the result by one or more column.
+
+Generally we use group by with some aggregation function.
+
+Count number of students in each city.
+Eg. SELECT city, count(name) FROM student GROUP BY city;
+
+
+Having Clause - similar to Where Clause (in some cases we cant use where clause there we require the need of having clause)
+Similar to Where i.e applies some condition on rows.
+Used when we want to apply any condition after grouping. 
+Count number of students in each city where max marks cross 90.
+
+Select count(name), city 
+from students
+group by city
+Having max(marks) > 90;
+
+General Order 
+Select column(s)
+FROM table_name
+WHERE condition
+GROUP BY column(s)
+HAVING condition
+ORDER BY column(s) ASC;
+
+
+
+
+
+
+
+
+
+
 
 
 

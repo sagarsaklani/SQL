@@ -20,3 +20,4 @@ values
 ("shaun",23,"D","Nagpur");
 
 select * from students;
+
